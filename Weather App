@@ -1,0 +1,167 @@
+\\index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search">
+            <input type="text" id="city" placeholder="Search for a city">
+            <button id="searchBtn">Search</button>
+        </div>
+        <div class="weather-info">
+            <h2 id="location">Vijayawada, India</h2>
+            <p id="datetime">08/02/2024, 10:04:55 PM</p>
+            <p id="description">Clouds</p>
+            <div class="icon-temp">
+                <img id="weather-icon" src="cloud-icon.png" alt="Weather Icon">
+                <h1 id="temperature">30°</h1>
+            </div>
+            <div class="details">
+                <p>Min: <span id="min-temp">30°</span></p>
+                <p>Max: <span id="max-temp">30°</span></p>
+            </div>
+            <div class="more-details">
+                <div>
+                    <p>Real Feel</p>
+                    <p id="real-feel">30°</p>
+                </div>
+                <div>
+                    <p>Humidity</p>
+                    <p id="humidity">82%</p>
+                </div>
+                <div>
+                    <p>Wind</p>
+                    <p id="wind">2.93m/s</p>
+                </div>
+                <div>
+                    <p>Pressure</p>
+                    <p id="pressure">1008hPA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+\\scripts.js
+
+document.getElementById('searchBtn').addEventListener('click', function() {
+    var city = document.getElementById('city').value;
+    getWeather(city);
+  });
+  
+  function getWeather(city) {
+    
+    var weatherData = {
+        location: city,
+        datetime: new Date().toLocaleString(),
+        description: "Clouds",
+        icon: "cloud-icon.png",
+        temperature: 27,
+        minTemp: 21,
+        maxTemp: 29,
+        realFeel: 25,
+        humidity: 80,
+        wind: 2.93,
+        pressure: 1008
+    };
+  
+    document.getElementById('location').innerText = weatherData.location;
+    document.getElementById('datetime').innerText = weatherData.datetime;
+    document.getElementById('description').innerText = weatherData.description;
+    document.getElementById('weather-icon').src = weatherData.icon;
+    document.getElementById('temperature').innerText = weatherData.temperature + '°';
+    document.getElementById('min-temp').innerText = weatherData.minTemp + '°';
+    document.getElementById('max-temp').innerText = weatherData.maxTemp + '°';
+    document.getElementById('real-feel').innerText = weatherData.realFeel + '°';
+    document.getElementById('humidity').innerText = weatherData.humidity + '%';
+    document.getElementById('wind').innerText = weatherData.wind + 'm/s';
+    document.getElementById('pressure').innerText = weatherData.pressure + 'hPA';
+  }
+
+\\style.css
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    color: #fff;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.search {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search button {
+    padding: 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #112777;
+    color: white;
+    cursor: pointer;
+}
+
+.weather-info {
+    text-align: center;
+}
+
+.weather-info h2 {
+    margin: 0;
+}
+
+.weather-info p {
+    margin: 5px 0;
+}
+
+.icon-temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-temp img {
+    width: 50px;
+    height: 50px;
+}
+
+.icon-temp h1 {
+    margin-left: 10px;
+    font-size: 48px;
+}
+
+.details, .more-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.more-details div {
+    text-align: center;
+}
